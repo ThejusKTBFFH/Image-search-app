@@ -1,28 +1,23 @@
-import axios from "axios";
-import { useState } from "react";
+
 import './App.css';
+import { Image } from "./components/Image";
+import {BrowserRouter,Routes, Route} from "react-router-dom"
+import Bookmarks from './components/Bookmarks';
 
 function App() {
 
-  function handleSearch(event) {
-    event.preventDefault();
-    alert("Searching...");
-  }
 
-  const [searchTerm, setSearchTerm] = useState("")
 
   return (
     <div className="App">
 
-      <h1>React Photo Search</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Image/>} />
+          <Route path="/bookmarks" element={<Bookmarks/>} />
+        </Routes>
+      </BrowserRouter>
 
-      <form>
-        <input type="text" value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} />
-        <button onClick={handleSearch}>Search</button>
-      </form>
-
-
-      
     </div>
   );
 }
